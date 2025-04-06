@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <title>Review Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .review-form .star-rating {
+            display: flex;
+            gap: 5px;
+        }
+
+        .review-form .star {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            /* Add smooth transitions */
+
+        }
+
+        .review-form .star:hover {
+            color: #f5c518;
+            /* Highlight color on hover */
+            transform: scale(1.2);
+            /* Slightly increase size on hover */
+        }
+
+        .review-form .star.selected {
+            color: #f5c518;
+            text-shadow: 0 0 5px #f5c518;
+            /* Glow effect for selected stars */
+
+        }
+
+        .review-form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .review-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+        .review {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .review .stars {
+            display: flex;
+            gap: 5px;
+        }
+
+        .review .review-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .review .review-actions button {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .review .review-actions button.edit {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .review .review-actions button.delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .review .review-actions button.save {
+            background-color: #28a745;
+            color: white;
+        }
+
+
+
+
+
+        /* Custom select container */
+        .select-container {
+            position: relative;
+            width: 300px;
+            margin: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+        }
+
+        .select-container::after {
+            content: '\2193';
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #888;
+            pointer-events: none;
+        }
+
+        select:hover {
+            border-color: #4CAF50;
+        }
+
+        option {
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+        }
+
+        option:hover {
+            background-color: #f0f0f0;
+        }
+
+        option:focus {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <center>
+            <font face='"Poppins", sans-serif' color="#2E4053" size="10">
+                <b> WRITE YOUR REVIEWS</b>
+            </font>
+        </center>
+
+        <div class="select-container">
+            <select id="bookDropdown" onchange="updateTextareaWithBookNameAndDate()">
+
+
+                <option disabled selected>Select the Dish</option>
+
+                <optgroup label="BURGER & SUBMARINE">
+
+                    <option value="CHEESE BURGER">CHEESE BURGER</option>
+                    <option value="BEEF BURGER">BEEF BURGER</option>
+                    <option value="BACON BURGER">BACON BURGER</option>
+                    <option value="CHICKEN & CHEESE SUBMARINE">CHICKEN & CHEESE SUBMARINE</option>
+                    <option value="PANEER BURGER">PANEER BURGER</option>
+                    <option value="DEVIL CHICKEN SUBMARINE">DEVIL CHICKEN SUBMARINE</option>
+                    <option value="VEGI BURGER">VEGI BURGER</option>
+
+                </optgroup>
+
+                <optgroup label="FRIES & PASTA">
+
+
+                    <option value="FRENCH FRIES">FRENCH FRIES</option>
+                    <option value="CURLY FRIES">CURLY FRIES</option>
+                    <option value="CHEESE PASTA">CHEESE PASTA</option>
+                    <option value="CHICKEN PASTA">CHICKEN PASTA</option>
+                    <option value="BACON PASTA">BACON PASTA</option>
+
+                </optgroup>
+
+
+            </select>
+        </div>
+
+        <br><br>
+        <div class="review-form">
+            <textarea id="comment" rows="4" placeholder="Write your review here..."></textarea>
+            <div class="star-rating" id="star-rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <br><br><br>
+            <button onclick="addReview()">
+                <font face='"Poppins", sans-serif' color="white" size="4">
+                    <b>Submit Review</b>
+                </font>
+            </button>
+        </div>
+
+        <div class="reviews" id="reviews">
+        </div>
+    </div>
+
+    <script>
+        function updateTextareaWithBookNameAndDate() {
+            const dropdown = document.getElementById('bookDropdown');
+            const selectedBook = dropdown.value;
+            const commentTextarea = document.getElementById('comment');
+
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
+
+            if (selectedBook) {
+                commentTextarea.value = `Selected Dish: ${selectedBook}\nDate: ${formattedDate}`;
+            }
+        }
+
+        let selectedRating = 0;
+
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => s.classList.remove('selected'));
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+
+        window.onload = function () {
+            const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            savedReviews.forEach(review => {
+                renderReview(review.comment, review.rating);
+            });
+        };
+
+        function addReview() {
+            const comment = document.getElementById('comment').value;
+            if (!comment.trim() || selectedRating === 0) {
+                alert('Please add a comment and select a star rating!');
+                return;
+            }
+
+            const newReview = { comment, rating: selectedRating };
+            saveReview(newReview);
+            renderReview(comment, selectedRating);
+
+            document.getElementById('comment').value = '';
+            selectedRating = 0;
+            stars.forEach(s => s.classList.remove('selected'));
+        }
+
+        // Render a review
+        function renderReview(comment, rating) {
+            const reviewContainer = document.createElement('div');
+            reviewContainer.classList.add('review');
+
+            const starsDiv = document.createElement('div');
+            starsDiv.classList.add('stars');
+            for (let i = 0; i < rating; i++) {
+                const star = document.createElement('span');
+                star.classList.add('star', 'selected');
+                star.textContent = '★';
+                starsDiv.appendChild(star);
+            }
+
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.textContent = comment;
+
+            const actionsDiv = document.createElement('div');
+            actionsDiv.classList.add('review-actions');
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.classList.add('edit');
+            editButton.addEventListener('click', () => editReview(commentDiv, editButton));
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete');
+            deleteButton.addEventListener('click', () => {
+                reviewContainer.remove();
+                deleteReview(comment);
+            });
+
+            actionsDiv.appendChild(editButton);
+            actionsDiv.appendChild(deleteButton);
+
+            reviewContainer.appendChild(starsDiv);
+            reviewContainer.appendChild(commentDiv);
+            reviewContainer.appendChild(actionsDiv);
+
+            document.getElementById('reviews').appendChild(reviewContainer);
+        }
+
+        // Save reviews to localStorage
+        function saveReview(review) {
+            const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            savedReviews.push(review);
+            localStorage.setItem('reviews', JSON.stringify(savedReviews));
+        }
+
+        // Delete a review from localStorage
+        function deleteReview(comment) {
+            const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const updatedReviews = savedReviews.filter(review => review.comment !== comment);
+            localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+        }
+
+        // Edit a review
+        function editReview(commentDiv, editButton) {
+            if (editButton.textContent === 'Edit') {
+                const textarea = document.createElement('textarea');
+                textarea.rows = 3;
+                textarea.value = commentDiv.textContent;
+                commentDiv.textContent = '';
+                commentDiv.appendChild(textarea);
+                editButton.textContent = 'Save';
+            } else {
+                const textarea = commentDiv.querySelector('textarea');
+                const newComment = textarea.value;
+                const oldComment = commentDiv.textContent;
+                commentDiv.textContent = newComment;
+                editButton.textContent = 'Edit';
+
+                // Update localStorage
+                const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                const reviewToUpdate = savedReviews.find(review => review.comment === oldComment);
+                if (reviewToUpdate) {
+                    reviewToUpdate.comment = newComment;
+                    localStorage.setItem('reviews', JSON.stringify(savedReviews));
+                }
+            }
+        }
+    </script>
+</body>
+
+
+</html>

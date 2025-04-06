@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>MOS Burger</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Container Styling */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Heading */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Input Fields */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Links Styling */
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <font face='"Poppins", sans-serif' color="#2E4053" size="7">
+                <b> GENERATE INVOICE </b>
+            </font>
+        </center>
+        <form action="http://localhost/MOSBurger/mosbill.php" method="post">
+            <div class="form-group">
+                <label for="bookTitle">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Customer ID:</font>
+                </label>
+                <input type="text" id="dish" name="dish" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Customer Name :</font>
+                </label>
+                <input type="text" id="quantity" name="quantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fullName">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Room Number:</font>
+                </label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Duration:</font>
+                </label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Additional Charges:</font>
+                </label>
+                <input type="text" id="charg" name="charg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <font face='"Poppins", sans-serif' color="#2E4053" size="4">Total Bill:</font>
+                </label>
+                <input type="text" id="email" name="email" required>
+            </div>
+
+            <a href="http://localhost/MOSBurger/mosbillpdf.php"> <button type="submit"><b>
+                        <font face='"Poppins", sans-serif' color="white" size="4">Generate Now</font>
+                    </b></button></a>
+        </form>
+
+        <p><a href="HotelReserve.html">Back to Home</a></p>
+    </div>
+
+
+</body>
+
+</html>

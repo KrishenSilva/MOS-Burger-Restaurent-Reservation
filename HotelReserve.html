@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <h2>Hotel Management System</h2>
+        <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#reservations">Reservations</a></li>
+            <li><a href="#billing">Billing</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#users">Users</a></li>
+        </ul>
+    </nav>
+
+
+
+    <section id="rooms" class="section">
+        <h2>Room Management</h2><a href="Room.html">
+            <button onclick="openRoomForm()">Add Room</button></a>
+        <table>
+            <tr>
+                <th>Room Number</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Availability</th>
+                <th>Occupancy</th>
+            </tr>
+
+
+        </table>
+
+    </section>
+
+    <section id="reservations" class="section">
+        <h2>Reservation Management</h2><a href="ReseveNow.html">
+            <button onclick="openReservationForm()">New Reservation</button></a>
+        <table>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Room</th>
+                <th>Duration</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </section>
+
+    <section id="reports" class="section">
+        <h2>Resevation Reports</h2>
+        <a href="http://localhost/MOSBurger/mosexporttopdf.php"> <button onclick="generateReport('pdf')">Export
+                PDF</button></a>
+    </section>
+
+    <section id="users" class="section">
+        <h2>Staff Management</h2>
+        <a href="AddNewStaff.html"> <button onclick="addUser()">Add New Staff</button></a>
+        <table>
+            <tr>
+                <th>Staff ID</th>
+                <th>Full Name</th>
+                <th>NIC Number</th>
+                <th>Gender</th>
+                <th>Role</th>
+
+            </tr>
+        </table>
+    </section>
+
+
+    <section id="billing" class="section">
+        <h2>Billing</h2>
+        <a href="Bill.html"><button onclick="generateInvoice()">Generate Invoice</button></a>
+        <a href="http://localhost/MOSBurger/mosbillpdf.php"> <button onclick="generateReport('pdf')">Bill
+                Report</button></a>
+    </section>
+
+    <section id="checkin" class="section">
+        <h2>Check-in/Check-out</h2>
+        <button onclick="checkInGuest()">Check In</button>
+        <button onclick="checkOutGuest()">Check Out</button>
+    </section>
+
+
+
+
+
+
+    <br><br><br>
+
+    <footer>
+        <p>&copy; 2025 Hotel Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openRoomForm() {
+            alert("Room form will open here.");
+        }
+        function openReservationForm() {
+            alert("Reservation form will open here.");
+        }
+        function checkInGuest() {
+            alert("Guest Checked In Successfully");
+        }
+        function checkOutGuest() {
+            alert("Guest Checked Out Successfully");
+        }
+        function generateInvoice() {
+            alert("Invoice Generated Successfully");
+        }
+        function generateReport(type) {
+            alert("Exporting Report as " + type.toUpperCase());
+        }
+        function addUser() {
+            alert("User Management Coming Soon");
+        }
+    </script>
+</body>
+
+</html>
